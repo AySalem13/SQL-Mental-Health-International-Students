@@ -6,7 +6,7 @@ Instead of just dropping code, this README walks through my **step-by-step proce
 
 ---
 
-## Step 1 – Understanding the question
+## 📌 Step 1 – Understanding the question
 
 The original prompt (from a SQL learning exercise on DataCamp) asked:
 
@@ -33,7 +33,7 @@ My goal here was not to “prove” anything, but to see if the **patterns in th
 
 ---
 
-## Step 2 – Focusing on the right population
+## 📌 Step 2 – Focusing on the right population
 
 Because the research question is about international students, the first decision was:
 
@@ -42,7 +42,7 @@ Because the research question is about international students, the first decisio
 In SQL terms, that means:
 ```WHERE inter_dom = 'Inter'```
 
-## Step 3 — Building the SQL Summary Table
+## 📌 Step 3 — Building the SQL Summary Table
 
 To understand how mental health changes with length of stay, I grouped the data by stay and calculated:
 
@@ -53,7 +53,7 @@ To understand how mental health changes with length of stay, I grouped the data 
 
 The added the SQL query in its own file in this repository. I then exported the result and took it to Power BI for better analysis.
 
-## Step 4 — First Look at the Full Trend (Years 1–10)
+## 📌 Step 4 — First Look at the Full Trend (Years 1–10)
 
 I created three line charts:
 
@@ -76,21 +76,28 @@ That made me wonder “Is the data actually reliable for those years?”
 
 So I checked the sample sizes.
 
-## Step 5 — Checking/Reducing the Sample Size by Stay Year
+## 📌 Step 5 — Checking/Reducing the Sample Size by Stay Year
 
 I went back to run a new query to check back the sample size: 
 
 SELECT stay, COUNT(*) AS count_int
+
 FROM students
+
 WHERE inter_dom = 'Inter'
+
 GROUP BY stay
+
 ORDER BY stay;
 
 The results: Years 1–4 → LARGE number of students / Years 5–10 → only 1–3 students per category
 
 This immediately told me that anything that happens after year 5 is probably noise, not a real pattern as I cant really make any conclusion based on such a small sample size.
 So I focused my analysis on the reliable portion of the data. I added a filter on PowerBI to show only Stay <= 4 and got the following line charts, which made me see a clear trend 
-from eachh line chart and answered the questions I have: 
+from eachh line chart and answered the questions I have.
+
+## 📌 Step 6 — Conclusion
+
 The PHQ-9 (depression) had an upwards trend
 
 <img width="527" height="293" alt="image" src="https://github.com/user-attachments/assets/1d0ee414-a858-4ab9-86c6-751ebbaea9ed" />
@@ -103,11 +110,12 @@ The Social connectedness had a downward trend
 
 <img width="527" height="286" alt="image" src="https://github.com/user-attachments/assets/34f8108c-092d-43ad-9b2e-74993fcfc0ec" />
 
-I could see that both the PHQ and AS both move in the same direction over the years which sugggests that depression and stress may be related.
-On the other hand, PHQ and SCS move in opposite directions which suggests that low connectedness may lead to higher depression.
+From the reliable years (1-4), I noticed that PHQ (depression) and AS (acculturative stress) both increase as the length of stay increases, which suggests that higher stress may be linked to higher
+depression scores. On the other hand, SCS (social connectedness) decreases over the same period, and since it moves in the opposite direction of PHQ, it suggests that feeling less socially connected may be 
+related to higher depression. 
 
+These patterns match the general ideas from the original study, and they show how stress, connectedness, and depression can move together in predictable ways. Even though I avoided making conclusions from the 
+small samples after year 5, the trends in years 1–4 were clear enough to show meaningful relationships between the three mental health indicators.
 
-
-
-
-
+Overall, this small project helped me understand how to break down a dataset, question the reliability of certain values, focus on the stable parts of the data, and spot meaningful patterns without 
+overinterpreting the noisy ones. It also showed how SQL and Power BI together can reveal connections that match what previous studies have found.
