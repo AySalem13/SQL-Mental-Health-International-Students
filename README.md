@@ -58,10 +58,15 @@ The added the SQL query in its own file in this repository. I then exported the 
 I created three line charts:
 
 -PHQ-9 average vs stay
+
 <img width="528" height="292" alt="image" src="https://github.com/user-attachments/assets/af70288c-05f6-4016-a2e7-a285d4506476" />
+
 -Acculturative stress average vs stay
+
 <img width="528" height="292" alt="image" src="https://github.com/user-attachments/assets/a0f461ee-68ae-4405-8de7-000cf1b8713b" />
+
 -Social connectedness average vs stay
+
 <img width="527" height="289" alt="image" src="https://github.com/user-attachments/assets/6d2ae152-4c20-4367-ab6b-2730436ed4a3" />
 
 🧠 Initial observation
